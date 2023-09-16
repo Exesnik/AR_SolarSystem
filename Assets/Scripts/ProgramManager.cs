@@ -20,7 +20,11 @@ public class ProgramManager : MonoBehaviour
     private ARRaycastManager arRaycastManager;
 
     [SerializeField]
-    public Slider _slider;
+    [Header("Speed")]
+    public Slider _sliderSpeed;
+    [SerializeField]
+    [Header("Scale")]
+    public Slider _sliderScale;
 
     private void Start()
     {

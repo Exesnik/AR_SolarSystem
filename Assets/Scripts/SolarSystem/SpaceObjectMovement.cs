@@ -38,7 +38,7 @@ public class SpaceObjectMovement : MonoBehaviour
     {
         if (_programManager != null)
         {
-            speedMultiplier = _programManager._slider.value;
+            speedMultiplier = _programManager._sliderSpeed.value;
         }
         else
         {
