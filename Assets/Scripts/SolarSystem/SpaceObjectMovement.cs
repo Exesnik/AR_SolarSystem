@@ -14,7 +14,9 @@ public class SpaceObjectMovement : MonoBehaviour
     private Vector3 axis;
 
     private SpaceObject spaceObject;
+
     private float speed;
+
 
     private ProgramManager _programManager;
 
@@ -31,6 +33,7 @@ public class SpaceObjectMovement : MonoBehaviour
         else
         {
             speed = spaceObject.speed;
+            
         }
     }
 
