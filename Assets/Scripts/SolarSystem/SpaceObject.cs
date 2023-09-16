@@ -6,10 +6,12 @@ public class SpaceObject : MonoBehaviour
 {
     
     public byte id;
-    public string name;
+    public string nameObject;
     public  float speed;
-   // public float distance; // пока не нужен
-   // public float scale; // пока не нужен
+    public float scale;
+
+    // public float distance; // пока не нужен
+
 
     // link to description 
 
