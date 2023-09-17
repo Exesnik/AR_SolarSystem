@@ -26,39 +26,34 @@ public class ProgramManager : MonoBehaviour
     [Header("Scale")]
     public Slider _sliderScale;
 
+    private float scaleMultiplier;
+
     private void Start()
     {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         planeMarkerPrefab.SetActive(false);
+
+        
     }
 
     private void Update()
     {
         ShowMarker();
+
+
+
+        scaleMultiplier = _sliderScale.value;
+
+
+        GameObject solarSystem = GameObject.FindWithTag("Solar System");
+
+        if (solarSystem != null)
+        {
+            solarSystem.transform.localScale = new Vector3(1f * scaleMultiplier, 1f * scaleMultiplier, 1f * scaleMultiplier);
+        }
+
     }
 
-    private void ShowMarker()
-    {
-        List<ARRaycastHit> hits = new List<ARRaycastHit>();
-
-        arRaycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.Planes);
-
-        if (onSolarSystem == true) // если есть солнечная системаб то нет маркера
-        {
-            planeMarkerPrefab.SetActive(false);
-        }
-        
-
-        if (hits.Count > 0) // если не видит пол для спавнаб не показывает маркер
-        {
-            planeMarkerPrefab.transform.position = hits[0].pose.position;
-            planeMarkerPrefab.SetActive(true);
-        }
-        else
-        {
-            planeMarkerPrefab.SetActive(false);
-        }
-    }
 
     public void SpawnOrDestroyOnMarker()
     {
@@ -89,6 +84,32 @@ public class ProgramManager : MonoBehaviour
             }
         }
     }
+
+    private void ShowMarker()
+    {
+        List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
+        arRaycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.Planes);
+
+
+
+        if (hits.Count > 0) // если не видит пол для спавнаб не показывает маркер
+        {
+            planeMarkerPrefab.transform.position = hits[0].pose.position;
+            planeMarkerPrefab.SetActive(true);
+        }
+        else
+        {
+            planeMarkerPrefab.SetActive(false);
+        }
+
+        if (onSolarSystem == true) // если есть солнечная системаб то нет маркера
+        {
+            planeMarkerPrefab.SetActive(false);
+        }
+
+    }
+
 
 
 }

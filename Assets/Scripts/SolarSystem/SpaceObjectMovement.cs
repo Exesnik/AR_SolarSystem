@@ -47,6 +47,7 @@ public class SpaceObjectMovement : MonoBehaviour
         {
             Debug.LogWarning("ProgramManager not found!");
         }
-            transform.RotateAround(ParentObject.position, axis, spaceObject.speed * speedMultiplier * Time.deltaTime);
+
+        transform.RotateAround(ParentObject.position, axis, spaceObject.speed * speedMultiplier * Time.deltaTime);
     }
 }
