@@ -277,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 702002186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 11.9, y: 11.9, z: 11.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 424110818}
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 10
   surfaceGravity: 1000
-  initialVelocity: {x: 0, y: -49.9, z: 0}
+  initialVelocity: {x: 0, y: 0, z: 0}
   bodyName: Unnamed
 --- !u!54 &917355929
 Rigidbody:
@@ -841,9 +841,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba05047271cf69d468200a729f1ea204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
-  surfaceGravity: 1000
-  initialVelocity: {x: 0, y: 50, z: 0}
+  radius: 11.9
+  surfaceGravity: 707.77
+  initialVelocity: {x: 0, y: 49.85, z: 0}
   bodyName: Unnamed
 --- !u!54 &2066460926
 Rigidbody:
