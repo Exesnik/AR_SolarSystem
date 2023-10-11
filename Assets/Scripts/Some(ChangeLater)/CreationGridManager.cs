@@ -14,8 +14,39 @@ public class CreationGridManager : MonoBehaviour
 
     void Start()
     {
-        // Создаем новый ARPlane в той же позиции, что и существующий ARPlane
-        newARPlane = Instantiate(arPlanePrefab, arPlanePrefab.transform.position, Quaternion.identity);
+        // Получаем компонент ARPlaneManager
+        ARPlaneManager arPlaneManager = FindObjectOfType<ARPlaneManager>();
+
+        // Проверяем, есть ли ARPlaneManager в сцене
+        if (arPlaneManager == null)
+        {
+            Debug.LogError("ARPlaneManager не найден в сцене!");
+            return;
+        }
+
+        // Подписываемся на событие OnPlaneAdded для ARPlaneManager
+        arPlaneManager.planesChanged += OnPlanesChangedHandler;
+    }
+
+    void OnPlanesChangedHandler(ARPlanesChangedEventArgs eventArgs)
+    {
+        ARPlane arPlane = null;
+
+        // Получаем первый добавленный ARPlane
+        if (eventArgs.added.Count > 0)
+        {
+            arPlane = eventArgs.added[0];
+        }
+
+        // Проверяем, что ARPlane не равен null
+        if (arPlane == null)
+        {
+            return;
+        }
+
+        // Создаем новый ARPlane в той же позиции, что и добавленный ARPlane, но с y-координатой, увеличенной на 1 метр
+        Vector3 newPosition = arPlane.transform.position + new Vector3(0f, 1f, 0f);
+        newARPlane = Instantiate(arPlanePrefab, newPosition, Quaternion.identity);
 
         // Получаем компонент MeshRenderer нового ARPlane
         MeshRenderer meshRenderer = newARPlane.GetComponent<MeshRenderer>();
@@ -23,13 +54,13 @@ public class CreationGridManager : MonoBehaviour
         // Устанавливаем новый материал для нового ARPlane
         meshRenderer.material = newMaterial;
 
-        // Подписываемся на событие OnBoundaryChanged для существующего ARPlane
-        arPlanePrefab.GetComponent<ARPlane>().boundaryChanged += OnBoundaryChangedHandler;
+        // Подписываемся на событие OnBoundaryChanged для добавленного ARPlane
+        arPlane.boundaryChanged += OnBoundaryChangedHandler;
     }
 
     void OnBoundaryChangedHandler(ARPlaneBoundaryChangedEventArgs eventArgs)
     {
-        // Обновляем MeshFilter.mesh нового ARPlane с помощью MeshFilter.mesh существующего ARPlane
-        newARPlane.GetComponent<MeshFilter>().mesh = arPlanePrefab.GetComponent<MeshFilter>().mesh;
+        // Обновляем MeshFilter.mesh нового ARPlane с помощью MeshFilter.mesh добавленного ARPlane
+        newARPlane.GetComponent<MeshFilter>().mesh = eventArgs.plane.GetComponent<MeshFilter>().mesh;
     }
 }
