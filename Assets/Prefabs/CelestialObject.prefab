@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 5478615917525571471}
   m_Layer: 0
   m_Name: CelestialObject
-  m_TagString: Untagged
+  m_TagString: PhysicalCelestialObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
