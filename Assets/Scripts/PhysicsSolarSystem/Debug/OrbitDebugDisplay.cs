@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 
-// Атрибут [ExecuteInEditMode] позволяет выполнение кода в редакторе Unity.
+[ExecuteInEditMode]
 public class OrbitDebugDisplay : MonoBehaviour
 {
-    public int numSteps = 1000; // Количество шагов для симуляции.
-    public float timeStep = 0.1f; // Временной шаг для симуляции.
-    public bool usePhysicsTimeStep; // Использовать временной шаг физики.
 
-    public bool relativeToBody; // Относительно выбранного небесного тела.
-    public CelestialBody centralBody; // Центральное небесное тело.
-    public float width = 100; // Ширина отрисованных орбит.
-    public bool useThickLines; // Использовать толстые линии для отрисовки.
+    public int numSteps = 1000;
+    public float timeStep = 0.1f;
+    public bool usePhysicsTimeStep;
+
+    public bool relativeToBody;
+    public CelestialBody centralBody;
+    public float width = 100;
+    public bool useThickLines;
 
     void Start()
     {
-        // Скрываем орбиты при запуске в режиме игры.
         if (Application.isPlaying)
         {
             HideOrbits();
@@ -23,7 +23,7 @@ public class OrbitDebugDisplay : MonoBehaviour
 
     void Update()
     {
-        // Рисуем орбиты только в режиме редактирования.
+
         if (!Application.isPlaying)
         {
             DrawOrbits();
@@ -32,14 +32,13 @@ public class OrbitDebugDisplay : MonoBehaviour
 
     void DrawOrbits()
     {
-        // Получаем все небесные тела в сцене.
         CelestialBody[] bodies = FindObjectsOfType<CelestialBody>();
         var virtualBodies = new VirtualBody[bodies.Length];
         var drawPoints = new Vector3[bodies.Length][];
         int referenceFrameIndex = 0;
         Vector3 referenceBodyInitialPosition = Vector3.zero;
 
-        // Инициализируем виртуальные тела (чтобы не изменять фактические тела).
+        // Initialize virtual bodies (don't want to move the actual bodies)
         for (int i = 0; i < virtualBodies.Length; i++)
         {
             virtualBodies[i] = new VirtualBody(bodies[i]);
@@ -52,29 +51,25 @@ public class OrbitDebugDisplay : MonoBehaviour
             }
         }
 
-        // Симуляция движения небесных тел.
+        // Simulate
         for (int step = 0; step < numSteps; step++)
         {
             Vector3 referenceBodyPosition = (relativeToBody) ? virtualBodies[referenceFrameIndex].position : Vector3.zero;
-
-            // Обновление скоростей.
+            // Update velocities
             for (int i = 0; i < virtualBodies.Length; i++)
             {
                 virtualBodies[i].velocity += CalculateAcceleration(i, virtualBodies) * timeStep;
             }
-
-            // Обновление позиций.
+            // Update positions
             for (int i = 0; i < virtualBodies.Length; i++)
             {
                 Vector3 newPos = virtualBodies[i].position + virtualBodies[i].velocity * timeStep;
                 virtualBodies[i].position = newPos;
-
                 if (relativeToBody)
                 {
                     var referenceFrameOffset = referenceBodyPosition - referenceBodyInitialPosition;
                     newPos -= referenceFrameOffset;
                 }
-
                 if (relativeToBody && i == referenceFrameIndex)
                 {
                     newPos = referenceBodyInitialPosition;
@@ -84,10 +79,10 @@ public class OrbitDebugDisplay : MonoBehaviour
             }
         }
 
-        // Отрисовка орбит.
+        // Draw paths
         for (int bodyIndex = 0; bodyIndex < virtualBodies.Length; bodyIndex++)
         {
-            var pathColour = bodies[bodyIndex].gameObject.GetComponentInChildren<MeshRenderer>().sharedMaterial.color;
+            var pathColour = bodies[bodyIndex].gameObject.GetComponentInChildren<MeshRenderer>().sharedMaterial.color; //
 
             if (useThickLines)
             {
@@ -106,17 +101,17 @@ public class OrbitDebugDisplay : MonoBehaviour
                     Debug.DrawLine(drawPoints[bodyIndex][i], drawPoints[bodyIndex][i + 1], pathColour);
                 }
 
-                // Скрываем LineRenderer, если он есть.
+                // Hide renderer
                 var lineRenderer = bodies[bodyIndex].gameObject.GetComponentInChildren<LineRenderer>();
                 if (lineRenderer)
                 {
                     lineRenderer.enabled = false;
                 }
             }
+
         }
     }
 
-    // Вычисление ускорения, действующего на тело.
     Vector3 CalculateAcceleration(int i, VirtualBody[] virtualBodies)
     {
         Vector3 acceleration = Vector3.zero;
@@ -133,12 +128,11 @@ public class OrbitDebugDisplay : MonoBehaviour
         return acceleration;
     }
 
-    // Скрытие орбит при запуске в режиме игры.
     void HideOrbits()
     {
         CelestialBody[] bodies = FindObjectsOfType<CelestialBody>();
 
-        // Скрываем орбиты с помощью LineRenderer.
+        // Draw paths
         for (int bodyIndex = 0; bodyIndex < bodies.Length; bodyIndex++)
         {
             var lineRenderer = bodies[bodyIndex].gameObject.GetComponentInChildren<LineRenderer>();
@@ -146,7 +140,6 @@ public class OrbitDebugDisplay : MonoBehaviour
         }
     }
 
-    // Метод OnValidate вызывается при изменении параметров объекта.
     void OnValidate()
     {
         if (usePhysicsTimeStep)
@@ -155,7 +148,6 @@ public class OrbitDebugDisplay : MonoBehaviour
         }
     }
 
-    // Вспомогательный класс для хранения данных виртуальных тел.
     class VirtualBody
     {
         public Vector3 position;
