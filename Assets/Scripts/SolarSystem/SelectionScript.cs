@@ -5,16 +5,18 @@ using UnityEngine;
 public class SelectionScript : MonoBehaviour
 {
     public Transform Selected_object;
-    public float width = 22.2f;
+    public float width = 0.5f;
+    Camera maincamera;
     // Update is called once per frame
 
     private void Start()
     {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        maincamera = FindObjectOfType<Camera>();
     }
     void Update()
     {   // Кликаем на объект и записивыем его туда
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -38,9 +40,14 @@ public class SelectionScript : MonoBehaviour
     {
         if (Selected_object != null)
         {
-            gameObject.transform.position = Selected_object.transform.position;
-            Vector3 new_scale = new Vector3(Selected_object.transform.localScale.x + width, Selected_object.transform.localScale.y + width, Selected_object.transform.localScale.z + width);
-            gameObject.transform.localScale = new_scale;
+            var heading = Selected_object.transform.position - maincamera.transform.position;
+            var distance = heading.magnitude;
+            float distance_multiplier = Mathf.Clamp(distance / 10, 0, Mathf.Infinity);
+            Vector3 way = heading / distance;
+            Vector3 new_scale = new Vector3(Selected_object.transform.localScale.x * width, Selected_object.transform.localScale.y * width, Selected_object.transform.localScale.z * width);
+            float average_scale = (new_scale.x + new_scale.y + new_scale.z) / 3f;
+            gameObject.transform.localScale = new Vector3(average_scale, average_scale, average_scale);
+            gameObject.transform.position = Selected_object.transform.position + way * average_scale * distance / 5;
         }
 
     }

@@ -1615,7 +1615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selected_object: {fileID: 0}
-  width: 1.12
+  width: 0.55
 --- !u!1 &1295749239
 GameObject:
   m_ObjectHideFlags: 0
