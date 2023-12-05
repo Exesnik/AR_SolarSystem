@@ -13,6 +13,19 @@ public class SSCreationSceneUIManager : MonoBehaviour
     [SerializeField]
     private GameObject UI_SetUpObjectOnScene;
 
+    [Space]
+
+    [SerializeField]
+    [Header("Radius")]
+    public TMP_InputField radiusInputField;
+    [SerializeField]
+    [Header("SurfaceGravity")]
+    public TMP_InputField surfaceGravityInputField;
+    [Header("InitalVelocity")]
+    [SerializeField]
+    public TMP_InputField initialVelocityInputField;
+
+
     public bool OnSpawnObjectMode = true;
 
 
@@ -31,6 +44,8 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
         OnSpawnObjectMode = true;
     }
+
+    //input field
 
 
 

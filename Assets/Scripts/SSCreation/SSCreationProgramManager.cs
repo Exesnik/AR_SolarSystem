@@ -9,19 +9,15 @@ using TMPro;
 public class SSCreationProgramManager : MonoBehaviour
 {
     private SSCreationSceneUIManager sceneUIManager;
-
+    private ARRaycastManager arRaycastManager;
 
     [SerializeField]
     [Header("Prefab for Plane Marker")] 
-    private GameObject planeMarkerPrefab;
+    private GameObject planeMarkerPrefab; // префаб маркера
 
     [SerializeField]
-    [Header("Prefab for Object to Spawn")]
-    private GameObject objectToSpawn;
-
-    private bool onSolarSystem = false;
-
-    private ARRaycastManager arRaycastManager;
+    [Header("Prefab for Plane Marker")]
+    private GameObject spaceObjectPrefab; // префаб шаблона космического обьекта
 
 
     private float scaleMultiplier;
@@ -29,6 +25,8 @@ public class SSCreationProgramManager : MonoBehaviour
     private void Start()
     {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
+        sceneUIManager = FindObjectOfType<SSCreationSceneUIManager>();
+
         planeMarkerPrefab.SetActive(false);
 
 
@@ -69,6 +67,21 @@ public class SSCreationProgramManager : MonoBehaviour
         { 
             planeMarkerPrefab.SetActive(false);
         }
+
+        // Спавн обьекта
+
+        if (true)
+        {
+            GameObject spaceObject = Instantiate(spaceObjectPrefab, planeMarkerPrefab.transform.position, planeMarkerPrefab.transform.rotation);             
+            CelestialBody celestialBody = spaceObject.GetComponent<CelestialBody>();
+
+            celestialBody.radius = 0;
+            celestialBody.surfaceGravity = 0;
+            celestialBody.initialVelocity.x = 0;
+            
+            // надо получить значения инпут филд и применить их к префабу (подумай как сделать нормально ок?)))
+        }
+
 
     }
 

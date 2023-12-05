@@ -1265,7 +1265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeMarkerPrefab: {fileID: 2132038247}
-  objectToSpawn: {fileID: 0}
+  spaceObjectPrefab: {fileID: 5478615917525571459, guid: 7c8bdd4ae6acc524e8dd799f5c3d6ccc,
+    type: 3}
 --- !u!114 &974762872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1280,6 +1281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI_ObjectValueSetting: {fileID: 1770390160}
   UI_SetUpObjectOnScene: {fileID: 1044286562}
+  radiusInputField: {fileID: 1086426836}
+  surfaceGravityInputField: {fileID: 227551270}
+  initialVelocityInputField: {fileID: 1474358143}
   OnSpawnObjectMode: 1
 --- !u!1 &1003220991
 GameObject:
