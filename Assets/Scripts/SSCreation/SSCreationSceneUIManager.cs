@@ -17,21 +17,36 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
     [SerializeField]
     [Header("Radius")]
-    public TMP_InputField radiusInputField;
+    private TMP_InputField radiusInputField;
     [SerializeField]
     [Header("SurfaceGravity")]
-    public TMP_InputField surfaceGravityInputField;
+    private TMP_InputField surfaceGravityInputField;
     [Header("InitalVelocity")]
     [SerializeField]
-    public TMP_InputField initialVelocityInputField;
+    private TMP_InputField initialVelocityInputField;
+
+
+    // create Input celestial body
+    public float radiusCelestialBody;
+    public float surfaceGravityCelestialBody;
+    public float initialVelocityCelestialBody;
+
 
 
     public bool OnSpawnObjectMode = true;
 
 
+
+    private void Start()
+    {
+        
+    }
+
     // buttons
     public void btn_Open_UI_ObjectValueSetting()
     {
+        Debug.Log("btn_Open_UI_ObjectValueSetting");
+
         UI_ObjectValueSetting.SetActive(true);
         UI_SetUpObjectOnScene.SetActive(false);
 
@@ -39,15 +54,28 @@ public class SSCreationSceneUIManager : MonoBehaviour
     }
     public void btn_Open_UI_SetUpObjectOnScene()
     {
+        Debug.Log("btn_Open_UI_SetUpObjectOnScene");
+
         UI_SetUpObjectOnScene.SetActive(true);
         UI_ObjectValueSetting.SetActive(false);
 
         OnSpawnObjectMode = true;
+
+        
+
     }
 
-    //input field
+    //input field обновление данных
 
 
+    public void AssignInputToVariable()
+    {
+        Debug.Log("AssignInputToVariable");
+
+        radiusCelestialBody = float.Parse(radiusInputField.text);
+        surfaceGravityCelestialBody = float.Parse(surfaceGravityInputField.text);
+        initialVelocityCelestialBody = float.Parse(initialVelocityInputField.text);        
+    }
 
 
 

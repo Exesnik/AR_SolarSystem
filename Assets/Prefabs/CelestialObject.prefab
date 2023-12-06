@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
-  surfaceGravity: 0
-  initialVelocity: {x: 0, y: 0, z: 0}
+  surfaceGravity: 10
+  initialVelocity: {x: 0, y: 1, z: 0}
   bodyName: Unnamed
 --- !u!120 &5478615917525571471
 LineRenderer:

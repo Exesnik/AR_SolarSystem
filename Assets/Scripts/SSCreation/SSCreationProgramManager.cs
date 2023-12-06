@@ -70,21 +70,27 @@ public class SSCreationProgramManager : MonoBehaviour
 
         // Спавн обьекта
 
-        if (true)
-        {
-            GameObject spaceObject = Instantiate(spaceObjectPrefab, planeMarkerPrefab.transform.position, planeMarkerPrefab.transform.rotation);             
-            CelestialBody celestialBody = spaceObject.GetComponent<CelestialBody>();
 
-            celestialBody.radius = 0;
-            celestialBody.surfaceGravity = 0;
-            celestialBody.initialVelocity.x = 0;
-            
-            // надо получить значения инпут филд и применить их к префабу (подумай как сделать нормально ок?)))
-        }
 
 
     }
 
+    public void SetGameObject()
+    {
+        Debug.Log("SetGameObject");
+
+            GameObject spaceObject = Instantiate(spaceObjectPrefab, planeMarkerPrefab.transform.position, planeMarkerPrefab.transform.rotation);
+            CelestialBody celestialBody = spaceObject.GetComponent<CelestialBody>();
+
+        Debug.Log("ValidationValueCelestialBody");
+            
+            celestialBody.radius = sceneUIManager.radiusCelestialBody;
+            
+            celestialBody.radius = sceneUIManager.surfaceGravityCelestialBody;
+            
+            celestialBody.radius = sceneUIManager.initialVelocityCelestialBody;
+
+    }
 
 
 }
