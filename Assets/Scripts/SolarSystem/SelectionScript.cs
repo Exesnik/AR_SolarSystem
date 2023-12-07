@@ -16,7 +16,7 @@ public class SelectionScript : MonoBehaviour
     }
     void Update()
     {   // Кликаем на объект и записивыем его туда
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
