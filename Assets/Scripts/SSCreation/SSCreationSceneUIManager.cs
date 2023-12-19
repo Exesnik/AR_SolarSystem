@@ -27,8 +27,11 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
 
     // create Input celestial body
+    [HideInInspector]
     public float radiusCelestialBody;
+    [HideInInspector]
     public float surfaceGravityCelestialBody;
+    [HideInInspector]
     public float initialVelocityCelestialBody;
 
 
