@@ -38,8 +38,6 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
     public bool OnSpawnObjectMode = true;
 
-
-
     private void Start()
     {
         

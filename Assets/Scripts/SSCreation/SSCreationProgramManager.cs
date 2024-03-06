@@ -22,6 +22,14 @@ public class SSCreationProgramManager : MonoBehaviour
 
     private float scaleMultiplier;
 
+    public SSCreationSceneUIManager SSCreationSceneUIManager
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void Start()
     {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
@@ -86,10 +94,13 @@ public class SSCreationProgramManager : MonoBehaviour
             
             celestialBody.radius = sceneUIManager.radiusCelestialBody;
             
-            celestialBody.radius = sceneUIManager.surfaceGravityCelestialBody;
-            
-            celestialBody.radius = sceneUIManager.initialVelocityCelestialBody;
+            celestialBody.surfaceGravity = sceneUIManager.surfaceGravityCelestialBody;
 
+            celestialBody.initialVelocity = new Vector3(0, sceneUIManager.initialVelocityCelestialBody, 0);
+
+        spaceObject.GetComponent<CelestialBody>().radius = sceneUIManager.radiusCelestialBody;
+        spaceObject.GetComponent<CelestialBody>().surfaceGravity = sceneUIManager.surfaceGravityCelestialBody;
+        spaceObject.GetComponent<CelestialBody>().initialVelocity = new Vector3(0, sceneUIManager.initialVelocityCelestialBody, 0);
     }
 
 

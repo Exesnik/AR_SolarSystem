@@ -80,4 +80,12 @@ public class CelestialBody : GravityObject
     {
         get { return rb.position; }
     }
+
+    public NBodySimulation NBodySimulation
+    {
+        get => default;
+        set
+        {
+        }
+    }
 }

@@ -28,6 +28,7 @@ public class ProgramManager : MonoBehaviour
 
     private float scaleMultiplier;
 
+
     private void Start()
     {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
