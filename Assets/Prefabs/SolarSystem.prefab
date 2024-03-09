@@ -266,6 +266,7 @@ MonoBehaviour:
   id: 2
   nameObject: 
   speed: 126
+  textInfo: 
 --- !u!1001 &377371288640947148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,6 +479,7 @@ MonoBehaviour:
   id: 8
   nameObject: 
   speed: 19
+  textInfo: 
 --- !u!114 &4556413893249207117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,6 +720,7 @@ MonoBehaviour:
   id: 4
   nameObject: 
   speed: 86
+  textInfo: 
 --- !u!1001 &377371288759863760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,6 +935,7 @@ MonoBehaviour:
   id: 7
   nameObject: 
   speed: 24
+  textInfo: 
 --- !u!1001 &377371288881152226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1144,6 +1148,7 @@ MonoBehaviour:
   id: 3
   nameObject: 
   speed: 107
+  textInfo: 
 --- !u!114 &3872436051105108304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,9 +1355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01311b4acce25b94c85a02eb52fae1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 9
   nameObject: 
   speed: 200
+  textInfo: 
 --- !u!114 &8692290111483800152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,6 +1616,7 @@ MonoBehaviour:
   id: 6
   nameObject: 
   speed: 34
+  textInfo: 
 --- !u!1001 &377371289243515025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1822,6 +1829,7 @@ MonoBehaviour:
   id: 5
   nameObject: 
   speed: 47
+  textInfo: 
 --- !u!114 &841067483732737812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,6 +1948,7 @@ MonoBehaviour:
   id: 0
   nameObject: 
   speed: 0
+  textInfo: 
 --- !u!1001 &377371290081159058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2166,6 +2175,7 @@ MonoBehaviour:
   id: 1
   nameObject: 
   speed: 170
+  textInfo: 
 --- !u!1001 &3366226567223375443
 PrefabInstance:
   m_ObjectHideFlags: 0

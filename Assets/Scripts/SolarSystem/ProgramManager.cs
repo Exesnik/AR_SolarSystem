@@ -19,12 +19,24 @@ public class ProgramManager : MonoBehaviour
 
     private ARRaycastManager arRaycastManager;
 
+    // //// //// //// //// //
+    [Header("UI")]
+
     [SerializeField]
-    [Header("Speed")]
+    private GameObject ui_ReadMode;
+
+    [SerializeField]
+    private GameObject ui_LookingMode;
+
+    [Header("Sliders")]
+
     public Slider _sliderSpeed;
-    [SerializeField]
-    [Header("Scale")]
     public Slider _sliderScale;
+
+    // //// //// //// //// //
+
+
+
 
     private float scaleMultiplier;
 
@@ -111,6 +123,11 @@ public class ProgramManager : MonoBehaviour
 
     }
 
+    private void ChangeUIMode() {
+
+        
+    
+    }
 
 
 }
