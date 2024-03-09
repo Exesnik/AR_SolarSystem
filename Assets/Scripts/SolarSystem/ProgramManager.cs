@@ -65,6 +65,15 @@ public class ProgramManager : MonoBehaviour
             solarSystem.transform.localScale = new Vector3(1f * scaleMultiplier, 1f * scaleMultiplier, 1f * scaleMultiplier);
         }
 
+
+        //
+        RaycastHit hit;
+        if (CheckRaycastToObject("TrackingObject", out hit))
+        {
+            // Вызов функции при столкновении
+            OnTrackingObjectHit(hit);
+        }
+
     }
 
 
@@ -123,11 +132,22 @@ public class ProgramManager : MonoBehaviour
 
     }
 
-    private void ChangeUIMode() {
+    private bool CheckRaycastToObject(string objectTag, out RaycastHit hit)
+    {
+        // Создание луча из центра экрана
+        Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
 
-        
-    
+        // Проверка столкновения луча с объектом
+        return Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.gameObject.tag == objectTag;
     }
 
+    private void OnTrackingObjectHit(RaycastHit hit)
+    {
+        // ...
 
+        // Выполнение действий при столкновении с объектом
+
+        Debug.Log("Объект с тегом 'TrackingObject' найден!");
+        // ...
+    }
 }
