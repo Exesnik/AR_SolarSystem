@@ -21,12 +21,18 @@ public class ProgramManager : MonoBehaviour
 
     // //// //// //// //// //
     [Header("UI")]
-
+    [SerializeField]
+    private GameObject ui_LookingMode;
     [SerializeField]
     private GameObject ui_ReadMode;
 
     [SerializeField]
-    private GameObject ui_LookingMode;
+    private GameObject btn_ShowInfo;
+
+    [SerializeField]
+    private GameObject infoScrollView;
+    [SerializeField]
+    private GameObject text_infoScrollView;
 
     [Header("Sliders")]
 
@@ -67,10 +73,10 @@ public class ProgramManager : MonoBehaviour
 
 
         //
+
         RaycastHit hit;
         if (CheckRaycastToObject("TrackingObject", out hit))
-        {
-            // Вызов функции при столкновении
+        {        
             OnTrackingObjectHit(hit);
         }
 
@@ -141,13 +147,40 @@ public class ProgramManager : MonoBehaviour
         return Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.gameObject.tag == objectTag;
     }
 
+    private SpaceObject currentSpaceObject;
+
     private void OnTrackingObjectHit(RaycastHit hit)
     {
-        // ...
-
-        // Выполнение действий при столкновении с объектом
-
         Debug.Log("Объект с тегом 'TrackingObject' найден!");
-        // ...
+        currentSpaceObject = hit.collider.gameObject.GetComponent<SpaceObject>();
+
+        if (currentSpaceObject != null)
+        {
+            btn_ShowInfo.SetActive(true);
+            
+        }
+    }
+
+    float saveSpeed;
+
+    public void ShowInfo()
+    {
+        saveSpeed = _sliderSpeed.value;
+        _sliderSpeed.value = 0;
+
+        TextMeshProUGUI tmp_text_infoScrollView = text_infoScrollView.GetComponent<TextMeshProUGUI>();
+        currentSpaceObject.InfoUpdate();
+        Debug.Log("Обновление инфы");
+        tmp_text_infoScrollView.text = currentSpaceObject.textInfo;
+
+        text_infoScrollView.SetActive(true);
+
+        if (_sliderSpeed.value == 0)
+        {
+            Debug.Log("Возвращение в обычный режим");
+
+            text_infoScrollView.SetActive(false);
+            _sliderSpeed.value = saveSpeed;
+        }
     }
 }
