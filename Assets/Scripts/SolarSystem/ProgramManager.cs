@@ -28,6 +28,8 @@ public class ProgramManager : MonoBehaviour
 
     [SerializeField]
     private GameObject btn_ShowInfo;
+    [SerializeField]
+    private GameObject btn_NotShowInfo;
 
     [SerializeField]
     private GameObject infoScrollView;
@@ -78,6 +80,10 @@ public class ProgramManager : MonoBehaviour
         if (CheckRaycastToObject("TrackingObject", out hit))
         {        
             OnTrackingObjectHit(hit);
+        }
+        else
+        {
+            btn_ShowInfo.SetActive(false);
         }
 
     }
@@ -159,28 +165,50 @@ public class ProgramManager : MonoBehaviour
             btn_ShowInfo.SetActive(true);
             
         }
+
     }
 
     float saveSpeed;
 
     public void ShowInfo()
     {
-        saveSpeed = _sliderSpeed.value;
-        _sliderSpeed.value = 0;
+        /*saveSpeed = _sliderSpeed.value;
+        _sliderSpeed.value = 0;*/
+
+      //  bool onShowInfo = true;
 
         TextMeshProUGUI tmp_text_infoScrollView = text_infoScrollView.GetComponent<TextMeshProUGUI>();
         currentSpaceObject.InfoUpdate();
         Debug.Log("Обновление инфы");
+        btn_NotShowInfo.SetActive(true);
+        infoScrollView.SetActive(true);
+
         tmp_text_infoScrollView.text = currentSpaceObject.textInfo;
 
-        text_infoScrollView.SetActive(true);
 
-        if (_sliderSpeed.value == 0)
+
+/*        if (onShowInfo == true)
         {
+            onShowInfo = false;
             Debug.Log("Возвращение в обычный режим");
 
-            text_infoScrollView.SetActive(false);
+            infoScrollView.SetActive(false);
             _sliderSpeed.value = saveSpeed;
-        }
+        }*/
+       
     }
+
+    public void NotShowInfo()
+    {
+        Debug.Log("Возвращение в обычный режим");
+
+        infoScrollView.SetActive(false);
+
+        btn_ShowInfo.SetActive(true);
+
+        btn_NotShowInfo.SetActive(false);
+
+
+    }
+
 }
