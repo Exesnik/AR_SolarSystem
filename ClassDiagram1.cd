@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SolarSystemObject">
+    <Position X="7" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAAAEAgA=</HashCode>
+      <FileName>Assets\Scripts\SolarSystemDataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolarSystemDataManager">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAACBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SolarSystemDataManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SolarSystemObject" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="JsonHelper">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="JsonHelper.Wrapper&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\SolarSystemDataManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SolarSystemDataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceObjectMovement">
+    <Position X="9.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAACAABAAAAAEAAAAABAAAAQAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SolarSystem\SpaceObjectMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgramManager">
+    <Position X="3.75" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgQAAQAAASBAAIAABAAAAAQBAAAqgIDggIAAAQgAAAA=</HashCode>
+      <FileName>Assets\Scripts\SolarSystem\ProgramManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceObject">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAgAAAAAAAAAAAQAAAAAQAAAEAgA=</HashCode>
+      <FileName>Assets\Scripts\SolarSystem\SpaceObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

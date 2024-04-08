@@ -1,45 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static JSONController;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    
+    using static SolarSystemDataManager;
+
 
 public class SpaceObject : MonoBehaviour
 {
-    
-    public byte id;
+    public int id;
     public string nameObject;
-    public  float speed;
+    public float speed;
     public string textInfo;
 
-    public ListInfoAboutObject listInfoAboutObject = new ListInfoAboutObject();
+    private SolarSystemObject data;
 
-    public void InfoUpdate()
+    public void UpdateInfo()
     {
-        
-        InfoAboutObject objectInfo = GetObjectInfoById(id);
+        SolarSystemDataManager dataManager = FindObjectOfType<SolarSystemDataManager>();
+        data = dataManager.GetObjectById(id);
 
-        if (objectInfo != null)
+        if (data == null)
         {
-            nameObject = objectInfo.nameObject;
-            speed = objectInfo.speed;
-            textInfo = objectInfo.textInfo;
+            Debug.LogError($"Failed to find data for space object with ID: {id}");
         }
-        else
-        {
-            Debug.LogError($"Объект с ID {id} не найден.");
-        }
-    }
 
- 
-    private InfoAboutObject GetObjectInfoById(byte objectId)
-    {
-        foreach (var obj in listInfoAboutObject.infoAboutObject)
+        if (data != null)
         {
-            if (obj.id == objectId)
-            {
-                return obj;
-            }
+            Debug.Log(
+                $"ID: {data.id}, " +
+                $"Название: {data.nameObject}, " +
+                $"Скорость: {data.speed}, " +
+                $"Описание: {data.textInfo}"
+            );
         }
-        return null; // Объект не найден
     }
 }

@@ -44,8 +44,6 @@ public class ProgramManager : MonoBehaviour
     // //// //// //// //// //
 
 
-
-
     private float scaleMultiplier;
 
 
@@ -54,7 +52,7 @@ public class ProgramManager : MonoBehaviour
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         planeMarkerPrefab.SetActive(false);
 
-        
+
     }
 
     private void Update()
@@ -78,7 +76,7 @@ public class ProgramManager : MonoBehaviour
 
         RaycastHit hit;
         if (CheckRaycastToObject("TrackingObject", out hit))
-        {        
+        {
             OnTrackingObjectHit(hit);
         }
         else
@@ -162,9 +160,12 @@ public class ProgramManager : MonoBehaviour
 
         if (currentSpaceObject != null)
         {
+
             btn_ShowInfo.SetActive(true);
-            
+
         }
+
+        
 
     }
 
@@ -172,30 +173,40 @@ public class ProgramManager : MonoBehaviour
 
     public void ShowInfo()
     {
-        /*saveSpeed = _sliderSpeed.value;
-        _sliderSpeed.value = 0;*/
+        saveSpeed = _sliderSpeed.value;
+        _sliderSpeed.value = 0;
 
-      //  bool onShowInfo = true;
-
-        TextMeshProUGUI tmp_text_infoScrollView = text_infoScrollView.GetComponent<TextMeshProUGUI>();
-        currentSpaceObject.InfoUpdate();
-        Debug.Log("Обновление инфы");
-        btn_NotShowInfo.SetActive(true);
+       // bool onShowInfo = true;
+        
         infoScrollView.SetActive(true);
+        btn_ShowInfo.SetActive(false);
+        btn_NotShowInfo.SetActive(true);
+        
 
-        tmp_text_infoScrollView.text = currentSpaceObject.textInfo;
+        currentSpaceObject.UpdateInfo();
+
+        Debug.Log(
+        $"ID: {currentSpaceObject.id}, " +
+        $"Название: {currentSpaceObject.nameObject}, " +
+        $"Скорость: {currentSpaceObject.speed}, " +
+        $"Описание: {currentSpaceObject.textInfo}"
+    );
+
+
+        text_infoScrollView.GetComponent<TextMeshProUGUI>().text = currentSpaceObject.textInfo;
 
 
 
-/*        if (onShowInfo == true)
+
+ /*       if (onShowInfo == true)
         {
             onShowInfo = false;
             Debug.Log("Возвращение в обычный режим");
-
+            btn_ShowInfo.SetActive(true);
             infoScrollView.SetActive(false);
             _sliderSpeed.value = saveSpeed;
         }*/
-       
+
     }
 
     public void NotShowInfo()

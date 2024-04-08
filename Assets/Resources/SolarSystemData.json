@@ -1,0 +1,64 @@
+{
+  "infoAboutObject": [
+    {
+      "id": 0,
+      "nameObject": "Солнце",
+      "speed": 0,
+      "textInfo": "Текст о Солнце"
+    },
+    {
+      "id": 1,
+      "nameObject": "Меркурий",
+      "speed": 170,
+      "textInfo": "Текст о Меркурии"
+    },
+    {
+      "id": 2,
+      "nameObject": "Венера",
+      "speed": 126,
+      "textInfo": "Текст о Венере"
+    },
+    {
+      "id": 3,
+      "nameObject": "Земля",
+      "speed": 107,
+      "textInfo": "Текст о Земле"
+    },
+    {
+      "id": 4,
+      "nameObject": "Марс",
+      "speed": 86,
+      "textInfo": "Текст о Марсе"
+    },
+    {
+      "id": 5,
+      "nameObject": "Юпитер",
+      "speed": 47,
+      "textInfo": "Текст о Юпитере"
+    },
+    {
+      "id": 6,
+      "nameObject": "Сатурн",
+      "speed": 34,
+      "textInfo": "Текст о Сатурне"
+    },
+    {
+      "id": 7,
+      "nameObject": "Уран",
+      "speed": 24,
+      "textInfo": "Текст о Уране"
+    },
+    {
+      "id": 8,
+      "nameObject": "Нептун",
+      "speed": 19,
+      "textInfo": "Текст о Нептуне"
+    },
+    {
+      "id": 9,
+      "nameObject": "Луна",
+      "speed": 200,
+      "textInfo": "Текст о Луне"
+    }
+  ]
+}
