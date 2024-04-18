@@ -34,18 +34,6 @@ public class SolarSystemDataManager : MonoBehaviour
 
         solarSystemObjects = JsonHelper.FromJson<SolarSystemObject>(jsonData.text);
 
-/*
-        foreach (SolarSystemObject obj in solarSystemObjects)
-        {
-            Debug.Log(
-                $"ID: {obj.id}, " +
-                $"Название: {obj.nameObject}, " +
-                $"Скорость: {obj.speed}, " +
-                $"Описание: {obj.textInfo}"
-            );
-
-        }*/
-
     }
 
     public SolarSystemObject GetObjectById(int id)

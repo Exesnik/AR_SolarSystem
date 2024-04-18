@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using UnityEngine;
     
-    using static SolarSystemDataManager;
+
 
 
 public class SpaceObject : MonoBehaviour
