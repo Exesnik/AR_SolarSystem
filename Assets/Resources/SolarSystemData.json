@@ -2,63 +2,63 @@
   "infoAboutObject": [
     {
       "id": 0,
-      "nameObject": "Солнце",
+      "nameObject": "РЎРѕР»РЅС†Рµ",
       "speed": 0,
-      "textInfo": "Текст о Солнце"
+      "textInfo": "РўРµРєСЃС‚ Рѕ РЎРѕР»РЅС†Рµ"
     },
     {
       "id": 1,
-      "nameObject": "Меркурий",
+      "nameObject": "РњРµСЂРєСѓСЂРёР№",
       "speed": 170,
-      "textInfo": "Текст о Меркурии"
+      "textInfo": "РўРµРєСЃС‚ Рѕ РњРµСЂРєСѓСЂРёРё"
     },
     {
       "id": 2,
-      "nameObject": "Венера",
+      "nameObject": "Р’РµРЅРµСЂР°",
       "speed": 126,
-      "textInfo": "Текст о Венере"
+      "textInfo": "РўРµРєСЃС‚ Рѕ Р’РµРЅРµСЂРµ"
     },
     {
       "id": 3,
-      "nameObject": "Земля",
+      "nameObject": "Р—РµРјР»СЏ",
       "speed": 107,
-      "textInfo": "Текст о Земле"
+      "textInfo": "РўРµРєСЃС‚ Рѕ Р—РµРјР»Рµ"
     },
     {
       "id": 4,
-      "nameObject": "Марс",
+      "nameObject": "РњР°СЂСЃ",
       "speed": 86,
-      "textInfo": "Текст о Марсе"
+      "textInfo": "РўРµРєСЃС‚ Рѕ РњР°СЂСЃРµ"
     },
     {
       "id": 5,
-      "nameObject": "Юпитер",
+      "nameObject": "Р®РїРёС‚РµСЂ",
       "speed": 47,
-      "textInfo": "Текст о Юпитере"
+      "textInfo": "РўРµРєСЃС‚ Рѕ Р®РїРёС‚РµСЂРµ"
     },
     {
       "id": 6,
-      "nameObject": "Сатурн",
+      "nameObject": "РЎР°С‚СѓСЂРЅ",
       "speed": 34,
-      "textInfo": "Текст о Сатурне"
+      "textInfo": "РўРµРєСЃС‚ Рѕ РЎР°С‚СѓСЂРЅРµ"
     },
     {
       "id": 7,
-      "nameObject": "Уран",
+      "nameObject": "РЈСЂР°РЅ",
       "speed": 24,
-      "textInfo": "Текст о Уране"
+      "textInfo": "РўРµРєСЃС‚ Рѕ РЈСЂР°РЅРµ"
     },
     {
       "id": 8,
-      "nameObject": "Нептун",
+      "nameObject": "РќРµРїС‚СѓРЅ",
       "speed": 19,
-      "textInfo": "Текст о Нептуне"
+      "textInfo": "РўРµРєСЃС‚ Рѕ РќРµРїС‚СѓРЅРµ"
     },
     {
       "id": 9,
-      "nameObject": "Луна",
+      "nameObject": "Р›СѓРЅР°",
       "speed": 200,
-      "textInfo": "Текст о Луне"
+      "textInfo": "РўРµРєСЃС‚ Рѕ Р›СѓРЅРµ"
     }
   ]
 }
