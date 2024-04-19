@@ -23,16 +23,14 @@ public class SpaceObject : MonoBehaviour
         if (data == null)
         {
             Debug.LogError($"Failed to find data for space object with ID: {id}");
+            textInfo = "Информация не найдена"; // Default text if data is not found
         }
-
-        if (data != null)
+        else
         {
-            Debug.Log(
-                $"ID: {data.id}, " +
-                $"Название: {data.nameObject}, " +
-                $"Скорость: {data.speed}, " +
-                $"Описание: {data.textInfo}"
-            );
+            // Update textInfo with the data from SolarSystemDataManager
+            nameObject = data.nameObject;
+            speed = data.speed;
+            textInfo = data.textInfo;
         }
     }
 }

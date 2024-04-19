@@ -160,13 +160,11 @@ public class ProgramManager : MonoBehaviour
 
         if (currentSpaceObject != null)
         {
-
             btn_ShowInfo.SetActive(true);
-
+            // Update info immediately on hit
+            currentSpaceObject.UpdateInfo();
+            text_infoScrollView.GetComponent<TextMeshProUGUI>().text = currentSpaceObject.textInfo;
         }
-
-        
-
     }
 
     float saveSpeed;
