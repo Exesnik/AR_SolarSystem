@@ -1,18 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Invisible : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] TMP_Text text;
+
+    private void Start()
     {
-        
+        text = GetComponent<TMP_Text>();
+        Color color = text.color;
+        color.a = 0f;
+        text.color = color;
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator InvisibleSprite()
     {
-        
+        for (float i = 0.05f; i <= 1; i += 0.05f)
+        { 
+            Color color = text.color;
+            color.a = i;
+            text.color = color;
+            yield return new WaitForSeconds(0.05f);
+        }
     }
+
+    public void StartInvisible()
+    { 
+        StartCoroutine(InvisibleSprite());
+    }
+
 }
