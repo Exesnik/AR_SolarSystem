@@ -11,9 +11,6 @@ public class Invisible : MonoBehaviour
     private void Start()
     {
         text = GetComponent<TMP_Text>();
-        Color color = text.color;
-        color.a = 0f;
-        text.color = color;
     }
 
     private IEnumerator InvisibleSprite()
