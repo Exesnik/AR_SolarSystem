@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -41,3 +41,4 @@ public class DisclamerManager : MonoBehaviour
         camera2.SetActive(false);
     }
 }
+*/
