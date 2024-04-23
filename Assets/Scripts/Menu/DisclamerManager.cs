@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,8 +20,8 @@ public class DisclamerManager : MonoBehaviour
     }
 
     private IEnumerator Manager()
-    { 
-        for(int i = 0;i < textList.Count;i++) 
+    {
+        for (int i = 0; i < textList.Count; i++)
         {
             textList[i].GetComponent<Invisible>().StartInvisible();
         }
@@ -41,4 +41,3 @@ public class DisclamerManager : MonoBehaviour
         camera2.SetActive(false);
     }
 }
-*/

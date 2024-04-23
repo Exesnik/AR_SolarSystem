@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using TMPro.EditorUtilities;
@@ -16,7 +16,7 @@ public class Invisible : MonoBehaviour
     private IEnumerator InvisibleSprite()
     {
         for (float i = 0.05f; i <= 1; i += 0.05f)
-        { 
+        {
             Color color = text.color;
             color.a = i;
             text.color = color;
@@ -25,9 +25,8 @@ public class Invisible : MonoBehaviour
     }
 
     public void StartInvisible()
-    { 
+    {
         StartCoroutine(InvisibleSprite());
     }
 
 }
-*/
