@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Invisible : MonoBehaviour
 {
-    [SerializeField] TMP_Text text;
+    [SerializeField] private TMP_Text text;
 
     private void Start()
     {

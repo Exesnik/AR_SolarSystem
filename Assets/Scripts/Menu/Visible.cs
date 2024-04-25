@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Visible : MonoBehaviour
 {
-    [SerializeField] TMP_Text text;
+    [SerializeField] private TMP_Text text;
 
     private void Start()
     {

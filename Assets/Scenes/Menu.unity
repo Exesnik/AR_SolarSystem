@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ef7ffc1ae6ef54e87f9c678954623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textList: []
-  materialList: []
+  textList:
+  - {fileID: 347916306}
+  - {fileID: 1142899506}
+  materialList:
+  - {fileID: 1631600854}
   camera1: {fileID: 2010041546}
   camera2: {fileID: 1353838742}
 --- !u!4 &134128118
@@ -520,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2baaa36dea011d41a5da9167b688167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  text: {fileID: 347916308}
 --- !u!1 &407581080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2baaa36dea011d41a5da9167b688167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  text: {fileID: 1142899508}
 --- !u!1 &1353838742
 GameObject:
   m_ObjectHideFlags: 0
