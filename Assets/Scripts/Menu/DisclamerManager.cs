@@ -2,42 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UIElements;
 
 public class DisclamerManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> textList;
-    [SerializeField] List<GameObject> materialList;
-    [SerializeField] GameObject camera1;
-    [SerializeField] GameObject camera2;
+    [SerializeField] private List<GameObject> textDisclamer;
+    [SerializeField] private List<GameObject> materialDisclamer;
+    [SerializeField] private List<GameObject> buttonsMenu;
+    [SerializeField] private List<GameObject> textOnButton;
+    [SerializeField] private List<GameObject> textMenu;
+    [SerializeField] private GameObject camera1;
+    [SerializeField] private GameObject camera2;
+    [SerializeField] private PostProcessVolume volume;
+
 
     private void Start()
     {
-        for (int i = 0; i < materialList.Count; i++)
+        for (int i = 0; i < materialDisclamer.Count; i++)
         {
-            materialList[i].GetComponent<VisibleObject>().InvisibleMaterial();
+            materialDisclamer[i].GetComponent<VisibleObject>().InvisibleMaterial();
         }
+        volume.weight = 0f;
         StartCoroutine(Manager());
     }
 
+    //private void Awake()
+    //{
+    //    for (int i = 0; i < textOnButton.Count; i++)
+    //    {
+    //        textOnButton[i].GetComponent<Visible>().StartVisible();
+    //    }
+    //    for (int i = 0; i < textMenu.Count; i++)
+    //    {
+    //        textMenu[i].GetComponent<Visible>().StartVisible();
+    //    }
+    //    for (int i = 0; i < buttonsMenu.Count; i++)
+    //    {
+    //        buttonsMenu[i].GetComponent<VisibleButtons>().StartVisible();
+    //    }
+    //}
+
     private IEnumerator Manager()
     {
-        for (int i = 0; i < textList.Count; i++)
+        for (int i = 0; i < textDisclamer.Count; i++)
         {
-            textList[i].GetComponent<Invisible>().StartInvisible();
+            textDisclamer[i].GetComponent<Invisible>().StartInvisible();
         }
-        yield return new WaitForSeconds(5);
-        for (int i = 0; i < textList.Count; i++)
+        yield return new WaitForSeconds(4.5f);
+        for (int i = 0; i < textDisclamer.Count; i++)
         {
-            textList[i].GetComponent<Visible>().StartVisible();
+            textDisclamer[i].GetComponent<Visible>().StartVisible();
         }
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < materialList.Count; i++)
+        for (int i = 0; i < materialDisclamer.Count; i++)
         {
-            materialList[i].GetComponent<VisibleObject>().StartVisible();
+            materialDisclamer[i].GetComponent<VisibleObject>().StartVisible();
+        }
+        for (float i = 0; i <= 0.6f; i += 0.05f)
+        {
+            volume.weight = i;
+            yield return new WaitForSeconds(0.08f);
         }
         yield return new WaitForSeconds(1.7f);
         camera1.SetActive(false);
         yield return new WaitForSeconds(1.7f);
         camera2.SetActive(false);
+        yield return new WaitForSeconds(1.8f);
+        for (int i = 0; i < textMenu.Count; i++)
+        {
+            textMenu[i].GetComponent<Invisible>().StartInvisible();
+        }
+        for (int i = 0; i < textOnButton.Count; i++)
+        {
+            textOnButton[i].GetComponent<Invisible>().StartInvisible();
+        }
+        for (int i = 0; i < buttonsMenu.Count; i++)
+        {
+            buttonsMenu[i].GetComponent<InvisibleButton>().StartInvisible();
+        }
     }
 }
