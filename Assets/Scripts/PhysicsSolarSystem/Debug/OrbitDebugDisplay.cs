@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [ExecuteInEditMode]
 public class OrbitDebugDisplay : MonoBehaviour
@@ -13,23 +14,35 @@ public class OrbitDebugDisplay : MonoBehaviour
     public float width = 100;
     public bool useThickLines;
 
+    // Action to control orbit visibility
+    public Action<bool> OnToggleOrbits;
+
+    private bool orbitsVisible = true;
+
     void Start()
     {
         if (Application.isPlaying)
         {
-            HideOrbits();
+            OnToggleOrbits?.Invoke(false); // Hide orbits initially
         }
     }
 
     void Update()
     {
-
         if (!Application.isPlaying)
         {
-            DrawOrbits();
+            OnToggleOrbits?.Invoke(true); // Show orbits in editor
         }
+    }
 
-
+    public void ToggleOrbits()
+    {
+        OnToggleOrbits?.Invoke(!AreOrbitsVisible());
+    }
+    private bool AreOrbitsVisible()
+    {
+        CelestialBody[] bodies = FindObjectsOfType<CelestialBody>();
+        return bodies.Length > 0 && bodies[0].gameObject.GetComponentInChildren<LineRenderer>().enabled;
     }
 
     void DrawOrbits()
