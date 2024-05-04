@@ -21,29 +21,32 @@ public class OrbitDebugDisplay : MonoBehaviour
 
     void Start()
     {
-        if (Application.isPlaying)
-        {
-            OnToggleOrbits?.Invoke(false); // Hide orbits initially
-        }
+        OnToggleOrbits?.Invoke(false); 
     }
 
     void Update()
     {
         if (!Application.isPlaying)
         {
-            OnToggleOrbits?.Invoke(true); // Show orbits in editor
+            DrawOrbits();
         }
     }
 
     public void ToggleOrbits()
     {
-        OnToggleOrbits?.Invoke(!AreOrbitsVisible());
+        orbitsVisible = !orbitsVisible;
+        OnToggleOrbits?.Invoke(orbitsVisible);
+
+        if (orbitsVisible)
+        {
+            DrawOrbits();
+        }
+        else
+        {
+            HideOrbits();
+        }
     }
-    private bool AreOrbitsVisible()
-    {
-        CelestialBody[] bodies = FindObjectsOfType<CelestialBody>();
-        return bodies.Length > 0 && bodies[0].gameObject.GetComponentInChildren<LineRenderer>().enabled;
-    }
+   
 
     void DrawOrbits()
     {
