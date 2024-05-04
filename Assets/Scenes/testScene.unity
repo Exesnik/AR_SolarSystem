@@ -539,7 +539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917355926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.32}
+  m_LocalPosition: {x: 6.69, y: 3.69, z: 4.8199997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -710,9 +710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cb8582804ebb9489345ee13988513b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeMarkerPrefab: {fileID: 0}
-  objectToSpawn: {fileID: 0}
-  nBodySimulation: {fileID: 99904570}
 --- !u!114 &1004541976
 MonoBehaviour:
   m_ObjectHideFlags: 0
