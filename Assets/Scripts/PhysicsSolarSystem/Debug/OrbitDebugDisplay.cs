@@ -14,41 +14,26 @@ public class OrbitDebugDisplay : MonoBehaviour
     public float width = 100;
     public bool useThickLines;
 
-    // Action to control orbit visibility
-    public Action<bool> OnToggleOrbits;
-
-    private bool orbitsVisible = true;
-
+ 
+  
     void Start()
     {
-        OnToggleOrbits?.Invoke(false); 
+       //HideOrbits();
     }
 
     void Update()
     {
-        if (!Application.isPlaying)
+
+        DrawOrbits();
+
+      /*  if (!Application.isPlaying)
         {
             DrawOrbits();
-        }
+        }*/
+
     }
 
-    public void ToggleOrbits()
-    {
-        orbitsVisible = !orbitsVisible;
-        OnToggleOrbits?.Invoke(orbitsVisible);
-
-        if (orbitsVisible)
-        {
-            DrawOrbits();
-        }
-        else
-        {
-            HideOrbits();
-        }
-    }
-   
-
-    void DrawOrbits()
+    public void DrawOrbits()
     {
         CelestialBody[] bodies = FindObjectsOfType<CelestialBody>();
         var virtualBodies = new VirtualBody[bodies.Length];
@@ -146,7 +131,7 @@ public class OrbitDebugDisplay : MonoBehaviour
         return acceleration;
     }
 
-    void HideOrbits()
+    public void HideOrbits()
     {
         CelestialBody[] bodies = FindObjectsOfType<CelestialBody>();
 

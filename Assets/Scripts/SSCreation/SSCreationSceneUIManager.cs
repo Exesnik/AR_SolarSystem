@@ -34,16 +34,10 @@ public class SSCreationSceneUIManager : MonoBehaviour
     [HideInInspector]
     public float initialVelocityCelestialBody;
 
-
-    public OrbitDebugDisplay orbitDisplay; // Ссылка на компонент OrbitDebugDisplay
-
     public bool OnSpawnObjectMode = true;
 
-    private void Start()
-    {
-        // Подписываемся на событие OnToggleOrbits компонента orbitDisplay
-        orbitDisplay.OnToggleOrbits += HandleOrbitToggle;
-    }
+    [SerializeField]
+    private GameObject orbitDebugDisplay;
 
     // buttons
     public void btn_Open_UI_ObjectValueSetting()
@@ -54,6 +48,8 @@ public class SSCreationSceneUIManager : MonoBehaviour
         UI_SetUpObjectOnScene.SetActive(false);
 
         OnSpawnObjectMode = false;
+
+        orbitDebugDisplay.SetActive(false);
     }
     public void btn_Open_UI_SetUpObjectOnScene()
     {
@@ -64,7 +60,8 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
         OnSpawnObjectMode = true;
 
-        
+        orbitDebugDisplay.SetActive(true);
+
 
     }
 
@@ -81,14 +78,7 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
       
     }
-    private void HandleOrbitToggle(bool isVisible)
-    {
-        // Если режим OnSpawnObjectMode активен и орбиты стали видимыми, то скрываем их
-        if (OnSpawnObjectMode && isVisible)
-        {
-            orbitDisplay.ToggleOrbits(); // Скрываем орбиты
-        }
-    }
+
 
 
 }
