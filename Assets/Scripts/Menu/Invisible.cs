@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-<<<<<<< HEAD
-=======
-
->>>>>>> 151ddb1d0c5d24f742396f03318c0175fd845edd
 using UnityEngine;
 
 public class Invisible : MonoBehaviour
