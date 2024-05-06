@@ -16,9 +16,10 @@ public class SSCreationProgramManager : MonoBehaviour
     private GameObject planeMarkerPrefab; // префаб маркера
 
     [SerializeField]
-    [Header("Prefab for Plane Marker")]
+    [Header("Prefab for CelestialObject")]
     private GameObject spaceObjectPrefab; // префаб шаблона космического обьекта
 
+  
 
     private float scaleMultiplier;
 
@@ -87,21 +88,31 @@ public class SSCreationProgramManager : MonoBehaviour
     {
         Debug.Log("SetGameObject");
 
-            GameObject spaceObject = Instantiate(spaceObjectPrefab, planeMarkerPrefab.transform.position, planeMarkerPrefab.transform.rotation);
+        GameObject nbodyContainer = GameObject.FindGameObjectWithTag("NCBS");
+
+
+        if (nbodyContainer != null)
+        {
+            // Instantiate the space object as a child of the NBCM object
+            GameObject spaceObject = Instantiate(spaceObjectPrefab,
+                                                planeMarkerPrefab.transform.position,
+                                                planeMarkerPrefab.transform.rotation,
+                                                nbodyContainer.transform);
+
+
+            // Получаем компонент CelestialBody созданного объекта
             CelestialBody celestialBody = spaceObject.GetComponent<CelestialBody>();
 
-        Debug.Log("ValidationValueCelestialBody");
-            
+            // Применяем параметры из пользовательского интерфейса к созданному объекту
             celestialBody.radius = sceneUIManager.radiusCelestialBody;
-            
             celestialBody.surfaceGravity = sceneUIManager.surfaceGravityCelestialBody;
-
             celestialBody.initialVelocity = new Vector3(0, sceneUIManager.initialVelocityCelestialBody, 0);
+        }
+        else
+        {
+            Debug.LogError("GameObject with tag 'NBCM' not found!");
+        }
 
-        spaceObject.GetComponent<CelestialBody>().radius = sceneUIManager.radiusCelestialBody;
-        spaceObject.GetComponent<CelestialBody>().surfaceGravity = sceneUIManager.surfaceGravityCelestialBody;
-        spaceObject.GetComponent<CelestialBody>().initialVelocity = new Vector3(0, sceneUIManager.initialVelocityCelestialBody, 0);
     }
-
-
+  
 }

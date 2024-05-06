@@ -34,14 +34,10 @@ public class SSCreationSceneUIManager : MonoBehaviour
     [HideInInspector]
     public float initialVelocityCelestialBody;
 
-
-
     public bool OnSpawnObjectMode = true;
 
-    private void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject orbitDebugDisplay;
 
     // buttons
     public void btn_Open_UI_ObjectValueSetting()
@@ -52,6 +48,8 @@ public class SSCreationSceneUIManager : MonoBehaviour
         UI_SetUpObjectOnScene.SetActive(false);
 
         OnSpawnObjectMode = false;
+
+        orbitDebugDisplay.SetActive(false);
     }
     public void btn_Open_UI_SetUpObjectOnScene()
     {
@@ -62,7 +60,8 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
         OnSpawnObjectMode = true;
 
-        
+        orbitDebugDisplay.SetActive(true);
+
 
     }
 
@@ -75,7 +74,9 @@ public class SSCreationSceneUIManager : MonoBehaviour
 
         radiusCelestialBody = float.Parse(radiusInputField.text);
         surfaceGravityCelestialBody = float.Parse(surfaceGravityInputField.text);
-        initialVelocityCelestialBody = float.Parse(initialVelocityInputField.text);        
+        initialVelocityCelestialBody = float.Parse(initialVelocityInputField.text);
+
+      
     }
 
 
