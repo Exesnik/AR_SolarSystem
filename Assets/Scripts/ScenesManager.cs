@@ -1,8 +1,16 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+    [SerializeField] private GameObject disclamerManager;
+    private DisclamerManager script;
+    private void Start()
+    {
+       script = disclamerManager.GetComponent <DisclamerManager>();
+    }
+
     // Загрузка сцены по имени
     public void LoadSceneMenu()
     {
@@ -11,7 +19,8 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSceneMapSS()
     {
-        SceneManager.LoadScene("MainSolarSystem");
+        script.ManagerToCoroutinMaps();
+        StartCoroutine(WaitingForLoad());
     }
 
     public void LoadSceneCreationSS()
@@ -23,5 +32,11 @@ public class ScenesManager : MonoBehaviour
     public void QuitApplication()
     {
         Application.Quit();
+    }
+
+    private IEnumerator WaitingForLoad()
+    { 
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MainSolarSystem");
     }
 }

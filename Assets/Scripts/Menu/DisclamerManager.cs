@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 
 
@@ -15,6 +16,10 @@ public class DisclamerManager : MonoBehaviour
     [SerializeField] private GameObject camera2;
     [SerializeField] private PostProcessVolume volume;
 
+    [SerializeField] private Image fadeDisplay;
+    [SerializeField] private GameObject camera3;
+    [SerializeField] private GameObject camera4;
+    [SerializeField] private GameObject display;
 
     private void Start()
     {
@@ -23,6 +28,10 @@ public class DisclamerManager : MonoBehaviour
             materialDisclamer[i].GetComponent<VisibleObject>().InvisibleMaterial();
         }
         volume.weight = 0f;
+        Color color = fadeDisplay.color;
+        color.a = 0f;
+        fadeDisplay.color = color;
+        display.SetActive(true);
         StartCoroutine(Manager());
     }
 
@@ -65,7 +74,7 @@ public class DisclamerManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1.7f);
         camera1.SetActive(false);
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.5f);
         camera2.SetActive(false);
         yield return new WaitForSeconds(1.8f);
         for (int i = 0; i < textMenu.Count; i++)
@@ -80,5 +89,45 @@ public class DisclamerManager : MonoBehaviour
         {
             buttonsMenu[i].GetComponent<InvisibleButton>().StartInvisible();
         }
+        display.SetActive(false);
+    }
+
+    // Переходы между сценами
+    private IEnumerator FadeToScene()
+    {
+        for (float i = -0.01f; i <= 1; i += 0.01f)
+        {
+            Color color = fadeDisplay.color;
+            color.a = i;
+            fadeDisplay.color = color;
+            yield return new WaitForSeconds(0.002f);
+        }
+    }
+    
+    public void ManagerToCoroutinMaps()
+    {
+        StartCoroutine(MenuToBaseScene());
+    }
+    private IEnumerator MenuToBaseScene()
+    {
+        display.SetActive(true);
+        for (int i = 0; i < textOnButton.Count; i++)
+        {
+            textOnButton[i].GetComponent<Visible>().StartVisible();
+        }
+        for (int i = 0; i < buttonsMenu.Count; i++)
+        {
+            buttonsMenu[i].GetComponent<VisibleButtons>().StartVisible();
+        }
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < textMenu.Count; i++)
+        {
+            textMenu[i].GetComponent<Visible>().StartVisible();
+        }
+        yield return new WaitForSeconds(1f);
+        camera3.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        camera4.SetActive(false);
+        StartCoroutine(FadeToScene());
     }
 }
