@@ -100,7 +100,7 @@ public class DisclamerManager : MonoBehaviour
             Color color = fadeDisplay.color;
             color.a = i;
             fadeDisplay.color = color;
-            yield return new WaitForSeconds(0.002f);
+            yield return new WaitForSeconds(0.005f);
         }
     }
     
