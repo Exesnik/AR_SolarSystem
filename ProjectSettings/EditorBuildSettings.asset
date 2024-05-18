@@ -12,5 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainSolarSystem.unity
     guid: d9eece3d554a1804e9ac07b13a00c21f
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 89a6d18d3df8d3e4fa917b0f9a963bc0,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: de8a8e4f987434338a4b1062feb8d069,
+      type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 1eb95d77acb39444e8cf44313496a874,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 58f40b12bbc864f3c96c6505a9a1e1e3,
+      type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 34cd5fc80bb7428418882b48df552be4,
       type: 2}
